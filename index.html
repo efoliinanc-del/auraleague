@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura League | Discord Futbol RP</title>
+    <style>
+        :root {
+            --bg-color: #1E1E1E;
+            --text-color: #F5F5F5;
+            --accent-color: #00FF88;
+            --card-bg: #2A2A2A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        header h1 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            color: #CCCCCC;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 5%;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Aura League</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Ana Sayfa</a></li>
+                <li><a href="#">Puan Durumu</a></li>
+                <li><a href="#">Kurallar</a></li>
+                <li><a href="#">Takımlar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Sahaya Çıkmaya Hazır Mısın?</h2>
+        <p>Aura League, rekabetin ve eğlencenin zirve yaptığı, en profesyonel Discord Futbol Roleplay deneyimidir. Takımını kur, taktiklerini belirle ve şampiyonluğa ulaş!</p>
+        <a href="#" class="btn">Discord Sunucumuza Katıl</a>
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <h3>Gerçekçi Simülasyon</h3>
+            <p>Maçlar ve istatistikler, gelişmiş sistemlerimizle en gerçekçi şekilde simüle edilir.</p>
+        </div>
+        <div class="card">
+            <h3>Aktif Transfer Sezonu</h3>
+            <p>Takım bütçeni yönet, yıldız oyuncuları kadrona kat ve ligi domine et.</p>
+        </div>
+        <div class="card">
+            <h3>Adil Moderasyon</h3>
+            <p>Otomatize edilmiş sistemler sayesinde adil ve güvenilir bir lig ortamı.</p>
+        </div>
+    </section>
+
+</body>
+</html>
