@@ -1,18 +1,187 @@
-<!-- Maç Sonuçları Bölümü -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura League | Discord Futbol RP</title>
+    <style>
+        :root {
+            --bg-color: #09090B;        
+            --text-color: #E0E0E0;      
+            --accent-color: #8A2BE2;    
+            --accent-hover: #6A1B9A;    
+            --card-bg: #14141A;         
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+            cursor: pointer;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        nav a { color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-color); }
+
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+            background: radial-gradient(circle at center, #1a1a24 0%, #09090B 100%);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h2 { font-size: 2.8rem; margin-bottom: 1rem; color: #FFFFFF; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto; color: #A0A0A0; }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+            padding: 0.9rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6); }
+
+        .content-section { padding: 5rem 5%; min-height: 60vh; text-align: center; border-top: 1px solid #1a1a24; }
+        .content-section h2 { color: var(--accent-color); font-size: 2.2rem; margin-bottom: 2rem; }
+
+        .matches-container { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+
+        .match-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .match-card:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(138, 43, 226, 0.15); }
+        .match-header { font-size: 0.9rem; color: #A0A0A0; text-align: center; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .match-score-board { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .team-name { font-size: 1.5rem; font-weight: bold; flex: 1; text-align: center; color: #FFF; }
+
+        .features { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .card { background-color: var(--card-bg); padding: 2.5rem 2rem; border-radius: 10px; width: 320px; text-align: center; border-top: 4px solid var(--accent-color); }
+        .card h3 { color: var(--accent-color); margin-bottom: 1rem; font-size: 1.4rem; }
+
+        footer {
+            background-color: var(--card-bg);
+            border-top: 2px solid var(--accent-color);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+        footer p { color: #888; font-size: 0.9rem; margin: 0.3rem 0; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <header>
+        <h1 onclick="window.scrollTo(0,0)">Aura League</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#matches">Maç Sonuçları</a></li>
+                <li><a href="#rules">Kurallar</a></li>
+                <li><a href="#teams">Takımlar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Sahaya Çıkmaya Hazır Mısın?</h2>
+        <p>Aura League, rekabetin ve eğlencenin zirve yaptığı, en profesyonel Discord Futbol Roleplay deneyimidir. Takımını kur, taktiklerini belirle ve şampiyonluğa ulaş!</p>
+        <a href="https://discord.gg/qcj9AjJHkw" target="_blank" class="btn">Discord Sunucumuza Katıl</a>
+    </section>
+
+    <!-- Dinamik Maç Sonuçları Bölümü -->
     <section id="matches" class="content-section">
         <h2>Son Oynanan Maçlar</h2>
         
-        <!-- Kartların içine geleceği boş kapsayıcı -->
         <div class="matches-container" id="matches-container">
             <p style="color: #A0A0A0; text-align: center;">Lig verileri sunucudan yükleniyor...</p>
         </div>
     </section>
 
-    <!-- ... (Kurallar ve Takımlar bölümleri aynı kalacak) ... -->
+    <section id="rules" class="content-section" style="background-color: #0c0c0f;">
+        <h2>Lig Kuralları</h2>
+        <div class="features">
+            <div class="card">
+                <h3>Gerçekçi Simülasyon</h3>
+                <p>Maçlar ve istatistikler, gelişmiş sistemlerimizle en gerçekçi şekilde simüle edilir.</p>
+            </div>
+            <div class="card">
+                <h3>Aktif Transfer Sezonu</h3>
+                <p>Takım bütçeni yönet, yıldız oyuncuları kadrona kat ve ligi domine et.</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- FOOTER AYNI KALACAK -->
+    <section id="teams" class="content-section">
+        <h2>Takımlar</h2>
+        <p>Ligdeki takımlar yakında burada listelenecek...</p>
+    </section>
 
-    <!-- Dinamik Veri Çekme Scripti -->
+    <footer>
+        <p>© 2026 Aura League. Tüm hakları saklıdır.</p>
+        <p>© 2026 Efe Studios. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Güvenlik Scriptleri -->
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) return false;
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
+            if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
+        };
+    </script>
+
+    <!-- Veritabanından Maçları Çekme Scripti -->
     <script>
         async function fetchMatches() {
             const container = document.getElementById('matches-container');
@@ -21,16 +190,14 @@
                 const response = await fetch('/api/matches');
                 const matches = await response.json();
                 
-                container.innerHTML = ''; // Yükleniyor yazısını temizle
+                container.innerHTML = ''; 
                 
                 if (matches.length === 0) {
                     container.innerHTML = '<p style="color: #A0A0A0; text-align: center;">Henüz oynanmış bir maç bulunmuyor.</p>';
                     return;
                 }
                 
-                // Veritabanından gelen her bir maç için HTML kartı oluştur
                 matches.forEach(match => {
-                    // Eğer görsel Discord'dan gelmişse ekrana basacak yapıyı kuruyoruz
                     const imageHtml = (match.imageUrl && match.imageUrl !== "Görsel Yok") 
                         ? `<div style="text-align: center; margin-top: 15px;"><img src="${match.imageUrl}" style="max-width: 100%; border-radius: 8px; border: 1px solid #8A2BE2;"></div>` 
                         : '';
@@ -39,9 +206,7 @@
                     <div class="match-card">
                         <div class="match-header">Aura League Maç Sonucu</div>
                         <div class="match-score-board">
-                            <div class="team-name" style="text-align: center; width: 100%; color: #FFF;">
-                                ${match.teamsAndScore}
-                            </div>
+                            <div class="team-name">${match.teamsAndScore}</div>
                         </div>
                         ${imageHtml}
                     </div>
@@ -53,9 +218,7 @@
                 container.innerHTML = '<p style="color: red; text-align: center;">Maçlar yüklenirken sunucu ile bağlantı kurulamadı.</p>';
             }
         }
-
-        // Sayfa tamamen yüklendiğinde maçları çekmeye başla
         document.addEventListener('DOMContentLoaded', fetchMatches);
     </script>
-    
-    <!-- Önceki Güvenlik Scriptleri (F12 ve Sağ Tık) aynı şekilde kalacak -->
+</body>
+</html>
