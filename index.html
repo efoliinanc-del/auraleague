@@ -1,0 +1,61 @@
+<!-- Maç Sonuçları Bölümü -->
+    <section id="matches" class="content-section">
+        <h2>Son Oynanan Maçlar</h2>
+        
+        <!-- Kartların içine geleceği boş kapsayıcı -->
+        <div class="matches-container" id="matches-container">
+            <p style="color: #A0A0A0; text-align: center;">Lig verileri sunucudan yükleniyor...</p>
+        </div>
+    </section>
+
+    <!-- ... (Kurallar ve Takımlar bölümleri aynı kalacak) ... -->
+
+    <!-- FOOTER AYNI KALACAK -->
+
+    <!-- Dinamik Veri Çekme Scripti -->
+    <script>
+        async function fetchMatches() {
+            const container = document.getElementById('matches-container');
+            
+            try {
+                const response = await fetch('/api/matches');
+                const matches = await response.json();
+                
+                container.innerHTML = ''; // Yükleniyor yazısını temizle
+                
+                if (matches.length === 0) {
+                    container.innerHTML = '<p style="color: #A0A0A0; text-align: center;">Henüz oynanmış bir maç bulunmuyor.</p>';
+                    return;
+                }
+                
+                // Veritabanından gelen her bir maç için HTML kartı oluştur
+                matches.forEach(match => {
+                    // Eğer görsel Discord'dan gelmişse ekrana basacak yapıyı kuruyoruz
+                    const imageHtml = (match.imageUrl && match.imageUrl !== "Görsel Yok") 
+                        ? `<div style="text-align: center; margin-top: 15px;"><img src="${match.imageUrl}" style="max-width: 100%; border-radius: 8px; border: 1px solid #8A2BE2;"></div>` 
+                        : '';
+
+                    const card = `
+                    <div class="match-card">
+                        <div class="match-header">Aura League Maç Sonucu</div>
+                        <div class="match-score-board">
+                            <div class="team-name" style="text-align: center; width: 100%; color: #FFF;">
+                                ${match.teamsAndScore}
+                            </div>
+                        </div>
+                        ${imageHtml}
+                    </div>
+                    `;
+                    container.innerHTML += card;
+                });
+                
+            } catch (error) {
+                container.innerHTML = '<p style="color: red; text-align: center;">Maçlar yüklenirken sunucu ile bağlantı kurulamadı.</p>';
+            }
+        }
+
+        // Sayfa tamamen yüklendiğinde maçları çekmeye başla
+        document.addEventListener('DOMContentLoaded', fetchMatches);
+    </script>
+    
+    <!-- Önceki Güvenlik Scriptleri (F12 ve Sağ Tık) aynı şekilde kalacak -->

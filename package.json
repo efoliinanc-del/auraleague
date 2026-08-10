@@ -1,0 +1,7 @@
+{
+  "name": "auraleague-web",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  }
+}
