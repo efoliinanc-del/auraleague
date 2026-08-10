@@ -7,19 +7,25 @@
     <style>
         :root {
             /* Mor ve Siyah Tema Renkleri */
-            --bg-color: #09090B;        /* En koyu siyah/arka plan */
-            --text-color: #E0E0E0;      /* Okunabilir açık gri metin */
-            --accent-color: #8A2BE2;    /* Canlı Mor (BlueViolet) */
-            --accent-hover: #6A1B9A;    /* Koyu Mor (Hover için) */
-            --card-bg: #14141A;         /* Kartlar için bir tık açık siyah */
+            --bg-color: #09090B;        
+            --text-color: #E0E0E0;      
+            --accent-color: #8A2BE2;    
+            --accent-hover: #6A1B9A;    
+            --card-bg: #14141A;         
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* İstediğin gibi Segoe UI odaklı font ailesi */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Yazı seçimini engelleme */
+            user-select: none;
+        }
+
+        /* Kaydırma çubuğu ayarları */
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -36,12 +42,16 @@
             align-items: center;
             border-bottom: 2px solid var(--accent-color);
             box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         header h1 {
             color: var(--accent-color);
             font-size: 1.8rem;
             text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+            cursor: pointer;
         }
 
         nav ul {
@@ -57,14 +67,19 @@
             transition: color 0.3s;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: var(--accent-color);
         }
 
         .hero {
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             background: radial-gradient(circle at center, #1a1a24 0%, #09090B 100%);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero h2 {
@@ -99,11 +114,23 @@
             box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6);
         }
 
+        .content-section {
+            padding: 5rem 5%;
+            min-height: 60vh;
+            text-align: center;
+            border-top: 1px solid #1a1a24;
+        }
+
+        .content-section h2 {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+
         .features {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            padding: 3rem 5%;
             flex-wrap: wrap;
         }
 
@@ -128,41 +155,95 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;"> <!-- HTML üzerinden sağ tık engeli -->
 
     <header>
-        <h1>Aura League</h1>
+        <h1 onclick="window.scrollTo(0,0)">Aura League</h1>
         <nav>
             <ul>
-                <li><a href="#">Ana Sayfa</a></li>
-                <li><a href="#">Puan Durumu</a></li>
-                <li><a href="#">Kurallar</a></li>
-                <li><a href="#">Takımlar</a></li>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#standings">Puan Durumu</a></li>
+                <li><a href="#rules">Kurallar</a></li>
+                <li><a href="#teams">Takımlar</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <h2>Sahaya Çıkmaya Hazır Mısın?</h2>
         <p>Aura League, rekabetin ve eğlencenin zirve yaptığı, en profesyonel Discord Futbol Roleplay deneyimidir. Takımını kur, taktiklerini belirle ve şampiyonluğa ulaş!</p>
-        <!-- Discord linkin buraya eklendi -->
         <a href="https://discord.gg/qcj9AjJHkw" target="_blank" class="btn">Discord Sunucumuza Katıl</a>
     </section>
 
-    <section class="features">
-        <div class="card">
-            <h3>Gerçekçi Simülasyon</h3>
-            <p>Maçlar ve istatistikler, gelişmiş sistemlerimizle en gerçekçi şekilde simüle edilir.</p>
-        </div>
-        <div class="card">
-            <h3>Aktif Transfer Sezonu</h3>
-            <p>Takım bütçeni yönet, yıldız oyuncuları kadrona kat ve ligi domine et.</p>
-        </div>
-        <div class="card">
-            <h3>Adil Moderasyon</h3>
-            <p>Otomatize edilmiş sistemler sayesinde adil ve güvenilir bir lig ortamı.</p>
+    <!-- Puan Durumu Bölümü -->
+    <section id="standings" class="content-section">
+        <h2>Puan Durumu</h2>
+        <p>Puan durumu sistemi yakında eklenecek...</p>
+        <!-- Buraya ileride tablo eklenebilir -->
+    </section>
+
+    <!-- Kurallar Bölümü -->
+    <section id="rules" class="content-section" style="background-color: #0c0c0f;">
+        <h2>Lig Kuralları</h2>
+        <div class="features">
+            <div class="card">
+                <h3>Gerçekçi Simülasyon</h3>
+                <p>Maçlar ve istatistikler, gelişmiş sistemlerimizle en gerçekçi şekilde simüle edilir.</p>
+            </div>
+            <div class="card">
+                <h3>Aktif Transfer Sezonu</h3>
+                <p>Takım bütçeni yönet, yıldız oyuncuları kadrona kat ve ligi domine et.</p>
+            </div>
+            <div class="card">
+                <h3>Adil Moderasyon</h3>
+                <p>Otomatize edilmiş sistemler sayesinde adil ve güvenilir bir lig ortamı.</p>
+            </div>
         </div>
     </section>
+
+    <!-- Takımlar Bölümü -->
+    <section id="teams" class="content-section">
+        <h2>Takımlar</h2>
+        <p>Ligdeki takımlar yakında burada listelenecek...</p>
+    </section>
+
+    <!-- Güvenlik Scriptleri -->
+    <script>
+        // Sağ Tık Engelleme (JS ile de destekliyoruz)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Tuş kombinasyonlarını engelleme (F12, Ctrl+Shift+I, Ctrl+U vb.)
+        document.onkeydown = function(e) {
+            // F12 engelleme
+            if (e.keyCode == 123) {
+                return false;
+            }
+            // Ctrl+Shift+I (Geliştirici Araçları)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            // Ctrl+Shift+J (Konsol)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            // Ctrl+U (Kaynağı Görüntüle)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+            // Ctrl+C (Kopyalama - user-select: none ekledik ama yine de bunu koyabiliriz)
+            if (e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+        };
+
+        // Geliştirici araçlarının açık olup olmadığını tespit etmeye çalışan alternatif bir yöntem
+        // Konsol açıldığında siteyi durdurur (İsteğe bağlı, şimdilik yoruma aldım)
+        /*
+        setInterval(function() {
+            debugger;
+        }, 100);
+        */
+    </script>
 
 </body>
 </html>
