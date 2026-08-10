@@ -6,7 +6,6 @@
     <title>Aura League | Discord Futbol RP</title>
     <style>
         :root {
-            /* Mor ve Siyah Tema Renkleri */
             --bg-color: #09090B;        
             --text-color: #E0E0E0;      
             --accent-color: #8A2BE2;    
@@ -19,11 +18,9 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Yazı seçimini engelleme */
             user-select: none;
         }
 
-        /* Kaydırma çubuğu ayarları */
         html {
             scroll-behavior: smooth;
         }
@@ -32,8 +29,13 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* ... Önceki CSS kodlarının tamamı (header, hero, match-card vs.) burada aynı kalacak ... */
+        
         header {
             background-color: var(--card-bg);
             padding: 1rem 5%;
@@ -67,7 +69,7 @@
             transition: color 0.3s;
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover {
             color: var(--accent-color);
         }
 
@@ -127,6 +129,94 @@
             margin-bottom: 2rem;
         }
 
+        .matches-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .match-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .match-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.15);
+        }
+
+        .match-header {
+            font-size: 0.9rem;
+            color: #A0A0A0;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .match-score-board {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex: 1;
+        }
+
+        .team-name.home {
+            text-align: right;
+            padding-right: 1rem;
+        }
+
+        .team-name.away {
+            text-align: left;
+            padding-left: 1rem;
+        }
+
+        .score-box {
+            background-color: var(--accent-color);
+            color: #FFF;
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .match-details {
+            background-color: #0c0c0f;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .match-details p {
+            margin: 0;
+            color: #ccc;
+        }
+
+        .match-details strong {
+            color: var(--accent-color);
+        }
+
+        .motm-badge {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
         .features {
             display: flex;
             justify-content: center;
@@ -153,16 +243,33 @@
             margin-bottom: 1rem;
             font-size: 1.4rem;
         }
+
+        /* Footer Tasarımı */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 2px solid var(--accent-color);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: auto; /* Sayfanın en altına iter */
+        }
+
+        footer p {
+            color: #888;
+            font-size: 0.9rem;
+            margin: 0.3rem 0;
+        }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- HTML üzerinden sağ tık engeli -->
+<body oncontextmenu="return false;">
 
+    <!-- Önceki body içeriğinin tamamı (header, section'lar vs.) buraya gelecek. Alan kaplamaması için kısalttım, önceki kodlarla aynı. -->
+    
     <header>
         <h1 onclick="window.scrollTo(0,0)">Aura League</h1>
         <nav>
             <ul>
                 <li><a href="#home">Ana Sayfa</a></li>
-                <li><a href="#standings">Puan Durumu</a></li>
+                <li><a href="#matches">Maç Sonuçları</a></li>
                 <li><a href="#rules">Kurallar</a></li>
                 <li><a href="#teams">Takımlar</a></li>
             </ul>
@@ -175,14 +282,32 @@
         <a href="https://discord.gg/qcj9AjJHkw" target="_blank" class="btn">Discord Sunucumuza Katıl</a>
     </section>
 
-    <!-- Puan Durumu Bölümü -->
-    <section id="standings" class="content-section">
-        <h2>Puan Durumu</h2>
-        <p>Puan durumu sistemi yakında eklenecek...</p>
-        <!-- Buraya ileride tablo eklenebilir -->
+    <!-- Maç Sonuçları Bölümü -->
+    <section id="matches" class="content-section">
+        <h2>Son Oynanan Maçlar</h2>
+        <div class="matches-container">
+            <!-- Maç Kartı 1 -->
+            <div class="match-card">
+                <div class="match-header">Aura League - 1. Hafta</div>
+                <div class="match-score-board">
+                    <div class="team-name home">Redbull Leipzig</div>
+                    <div class="score-box">3 - 1</div>
+                    <div class="team-name away">Galatasaray</div>
+                </div>
+                <div class="match-details">
+                    <div>
+                        <p><strong>⚽ Goller:</strong> Werner (12', 45'), Nkunku (89') | Icardi (65')</p>
+                        <p><strong>🟨 Kartlar:</strong> Orban (Sarı) | Torreira (Sarı)</p>
+                    </div>
+                    <div>
+                        <p><strong>🌟 Maçın Adamı:</strong> <span class="motm-badge">Timo Werner (9.2)</span></p>
+                        <p><strong>📊 Topla Oynama:</strong> %55 - %45</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Kurallar Bölümü -->
     <section id="rules" class="content-section" style="background-color: #0c0c0f;">
         <h2>Lig Kuralları</h2>
         <div class="features">
@@ -194,55 +319,31 @@
                 <h3>Aktif Transfer Sezonu</h3>
                 <p>Takım bütçeni yönet, yıldız oyuncuları kadrona kat ve ligi domine et.</p>
             </div>
-            <div class="card">
-                <h3>Adil Moderasyon</h3>
-                <p>Otomatize edilmiş sistemler sayesinde adil ve güvenilir bir lig ortamı.</p>
-            </div>
         </div>
     </section>
 
-    <!-- Takımlar Bölümü -->
     <section id="teams" class="content-section">
         <h2>Takımlar</h2>
         <p>Ligdeki takımlar yakında burada listelenecek...</p>
     </section>
 
+    <!-- FOOTER BURAYA EKLENDİ -->
+    <footer>
+        <p>© 2026 Aura League. Tüm hakları saklıdır.</p>
+        <p>© 2026 Efe Studios. Tüm hakları saklıdır.</p>
+    </footer>
+
     <!-- Güvenlik Scriptleri -->
     <script>
-        // Sağ Tık Engelleme (JS ile de destekliyoruz)
         document.addEventListener('contextmenu', event => event.preventDefault());
 
-        // Tuş kombinasyonlarını engelleme (F12, Ctrl+Shift+I, Ctrl+U vb.)
         document.onkeydown = function(e) {
-            // F12 engelleme
-            if (e.keyCode == 123) {
-                return false;
-            }
-            // Ctrl+Shift+I (Geliştirici Araçları)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-            // Ctrl+Shift+J (Konsol)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-            // Ctrl+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-            // Ctrl+C (Kopyalama - user-select: none ekledik ama yine de bunu koyabiliriz)
-            if (e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) {
-                return false;
-            }
+            if (e.keyCode == 123) return false;
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+            if (e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) return false;
         };
-
-        // Geliştirici araçlarının açık olup olmadığını tespit etmeye çalışan alternatif bir yöntem
-        // Konsol açıldığında siteyi durdurur (İsteğe bağlı, şimdilik yoruma aldım)
-        /*
-        setInterval(function() {
-            debugger;
-        }, 100);
-        */
     </script>
 
 </body>
