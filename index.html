@@ -143,7 +143,7 @@
         <h2>Son Oynanan Maçlar</h2>
         
         <div class="matches-container" id="matches-container">
-            <p style="color: #A0A0A0; text-align: center;">Lig verileri sunucudan yükleniyor...</p>
+            <p style="color: #A0A0A0; text-align: center;">Lig verileri dosyadan yükleniyor...</p>
         </div>
     </section>
 
@@ -181,13 +181,19 @@
         };
     </script>
 
-    <!-- Veritabanından Maçları Çekme Scripti -->
+    <!-- Doğrudan JSON Dosyasından Maçları Çekme Scripti -->
     <script>
         async function fetchMatches() {
             const container = document.getElementById('matches-container');
             
             try {
-                const response = await fetch('/api/matches');
+                // API yolunu sildik, doğrudan botun ürettiği dosyayı okuyor
+                const response = await fetch('maclar.json'); 
+                
+                if (!response.ok) {
+                    throw new Error("Dosya bulunamadı");
+                }
+                
                 const matches = await response.json();
                 
                 container.innerHTML = ''; 
@@ -197,7 +203,8 @@
                     return;
                 }
                 
-                matches.forEach(match => {
+                // Bot dosyaya maçları alt alta eklediği için, en yeni maçın sitede en üstte görünmesi amacıyla listeyi ters çeviriyoruz.
+                matches.reverse().forEach(match => {
                     const imageHtml = (match.imageUrl && match.imageUrl !== "Görsel Yok") 
                         ? `<div style="text-align: center; margin-top: 15px;"><img src="${match.imageUrl}" style="max-width: 100%; border-radius: 8px; border: 1px solid #8A2BE2;"></div>` 
                         : '';
@@ -215,7 +222,7 @@
                 });
                 
             } catch (error) {
-                container.innerHTML = '<p style="color: red; text-align: center;">Maçlar yüklenirken sunucu ile bağlantı kurulamadı.</p>';
+                container.innerHTML = '<p style="color: red; text-align: center;">Maç verileri yüklenemedi. maclar.json dosyası eksik olabilir.</p>';
             }
         }
         document.addEventListener('DOMContentLoaded', fetchMatches);
